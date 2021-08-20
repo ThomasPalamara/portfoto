@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       transformationPosition="path"
       authenticationEndpoint="http://www.yourserver.com/auth"
     >
-      <div className="bg-dark text-white h-full min-h-screen">
+      <div className="body bg-dark text-white h-full min-h-screen">
         <Component {...pageProps} />
       </div>
     </IKContext>

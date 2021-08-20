@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import Nav from './components/Nav';
+import Hero from './components/Hero';
 import PhotoGrid from './components/PhotoGrid';
 import ImageKit from 'imagekit';
 import { GetStaticProps } from 'next';
@@ -9,7 +9,8 @@ import { GetStaticProps } from 'next';
 type Props = {
   result: any;
 };
-const Home: NextPage = ({ result }: Props) => {
+
+const Home: React.FC<Props> = ({ result }) => {
   return (
     <div>
       <Head>
@@ -19,33 +20,16 @@ const Home: NextPage = ({ result }: Props) => {
       </Head>
 
       <main>
-        <Nav />
+        <Hero />
         <PhotoGrid pictures={result} />
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   );
 };
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  console.log('test');
-  console.log(' :', process.env.NEXT_PUBLIC_IK_PUBLIC_KEY);
-  console.log('process.env.IK_PRIVATE_KEY :', process.env.IK_PRIVATE_KEY);
-  console.log(' :', process.env.NEXT_PUBLIC_IK_URL_ENDPOINT);
+export const getStaticProps: GetStaticProps = async () => {
   var imagekit = new ImageKit({
     publicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY || '',
     privateKey: process.env.IK_PRIVATE_KEY || '',
