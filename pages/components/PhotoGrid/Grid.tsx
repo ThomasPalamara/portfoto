@@ -15,7 +15,7 @@ const Grid = ({ pictures }: Props) => {
         columnClassName="my-masonry-grid_column"
       >
         {pictures &&
-          pictures.map((picture: any, i) => (
+          pictures.map((picture: any) => (
             <div key={picture.fileId}>
               <IKImage
                 path={'/' + picture.name}
