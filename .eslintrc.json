@@ -4,6 +4,7 @@
     "react/self-closing-comp": ["error", {
       "component": true,
       "html": true
-    }]
+    }],
+    "import/no-anonymous-default-export": ["error", {"allowArrowFunction": true}]
   }
 }

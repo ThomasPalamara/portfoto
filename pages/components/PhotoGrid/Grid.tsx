@@ -1,35 +1,53 @@
 import React from 'react';
 import { IKImage } from 'imagekitio-react';
-import Masonry from 'react-masonry-css';
+import Masonry from './Masonry';
+import getOptimalWidth from '../../../utils/getOptimalWidth';
+import FlipMove from 'react-flip-move';
 
 interface Props {
-  pictures: any;
+  pictures: Image[];
+  filter: string;
 }
 
-const Grid = ({ pictures }: Props) => {
+const Grid = ({ pictures, filter }: Props) => {
+  const pics = pictures;
+  const rowsHeight = 300;
   return (
-    <div>
-      <Masonry
-        breakpointCols={3}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {pictures &&
-          pictures.map((picture: any) => (
-            <div key={picture.fileId}>
-              <IKImage
-                path={'/' + picture.name}
-                transformation={[
-                  {
-                    quality: 1,
-                  },
-                ]}
-                loading="lazy"
-              />
-            </div>
-          ))}
-      </Masonry>
-      {console.log('result :', pictures)}
+    // min height important for removing flickering when changing filter
+    <div className="min-h-screen">
+      <div>
+        <FlipMove className="flex flex-row flex-wrap justify-center">
+          {pics &&
+            pics
+              .filter((picture: any) =>
+                filter ? picture.tags?.includes(filter) : true
+              )
+              .map(({ fileId, name, height, width }) => (
+                <div
+                  key={fileId}
+                  className="p-2 overflow-hidden relative"
+                  style={
+                    {
+                      // height: rowsHeight,
+                      // width: getOptimalWidth(width, height, rowsHeight),
+                    }
+                  }
+                >
+                  <IKImage
+                    // className="h-full absolute max-w-none origin-center top-0 right-0 left-0 bottom-0"
+                    // style={{ height: rowsHeight }}
+                    path={'/' + name}
+                    transformation={[
+                      {
+                        quality: 1,
+                      },
+                    ]}
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+        </FlipMove>
+      </div>
     </div>
   );
 };

@@ -8,7 +8,7 @@ const Hero: React.FC = () => {
       <div className="pt-20 mb-20 flex items-center text-center h-full">
         <div className="relative ml-5 w-1/2">
           <span
-            className={`${titleClasses} text-9xl position absolute inset-x-0 opacity-30 text-transparent`}
+            className={`${titleClasses} text-9xl position absolute inset-x-0 opacity-30 text-transparent transform rotate-180`}
             style={{
               WebkitTextStroke: '1px rgba(255, 255, 255, 0.15)',
               top: '-150%',
