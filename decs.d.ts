@@ -1,6 +1,6 @@
 declare module 'imagekitio-react';
 
-type Image = {
+type Photo = {
   type: string;
   name: string;
   createdAt: string;

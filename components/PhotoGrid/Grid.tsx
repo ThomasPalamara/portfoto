@@ -1,11 +1,11 @@
 import React from 'react';
 import { IKImage } from 'imagekitio-react';
 import Masonry from './Masonry';
-import getOptimalWidth from '../../../utils/getOptimalWidth';
+import getOptimalWidth from '../../utils/getOptimalWidth';
 import FlipMove from 'react-flip-move';
 
 interface Props {
-  pictures: Image[];
+  pictures: Photo[];
   filter: string;
 }
 

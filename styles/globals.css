@@ -1,10 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* @font-face {
+  font-family: futura;
+  src: url('./fonts/futura-pt-book.otf');
+} */
 .body {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: Poppins, sans-serif;
+  color: #ccc;
+  letter-spacing: 2px;
 }
 .hero {
-  background-image: url('../public/main.jpg');
+  /* background-image: url('../public/main.jpg'); */
 }
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
@@ -23,4 +29,13 @@
   /* change div to reference your elements you put in <Masonry> */
   background: grey;
   margin-bottom: 30px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #434344;
 }

@@ -3,7 +3,7 @@ import Grid from './Grid';
 import Nav from './Nav';
 
 interface Props {
-  pictures: Image[];
+  pictures: Photo[];
 }
 
 const PhotoGrid = ({ pictures }: Props) => {

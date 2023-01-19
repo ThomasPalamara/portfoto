@@ -1,5 +1,5 @@
 import React from 'react';
-import upperFirst from '../../../utils/upperFirst';
+import upperFirst from '../../utils/upperFirst';
 interface Props {
   selectedFilter: string;
   selectFilter: (arg0: string) => void;
