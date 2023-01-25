@@ -1,15 +1,4 @@
-import ImageKit from 'imagekit';
 import React, { useState, useContext, useEffect } from 'react';
-
-interface Toast {
-  //   id: number;
-  //   message: string;
-  //   variant: 'error' | 'success' | 'primary';
-}
-
-type ContextProps = {
-  //   addToast: (variant: Toast['variant'], message: Toast['message']) => void;
-};
 
 export const PhotoContext = React.createContext<ContextProps | null>(null);
 

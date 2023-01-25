@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 export const useOnHoverOutside = (ref, handler) => {
   useEffect(() => {

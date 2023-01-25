@@ -12,7 +12,6 @@ const Nav: React.FC<Props> = ({ height }) => {
   const [isMenuDropDownOpen, setMenuDropDownOpen] = useState(false);
 
   const closeHoverMenu = () => {
-    console.log('call closeHoverMenu');
     setMenuDropDownOpen(false);
   };
 
@@ -78,7 +77,7 @@ const Nav: React.FC<Props> = ({ height }) => {
                 onMouseOver={() => setMenuDropDownOpen(true)}
                 ref={dropdownRef}
               >
-                <a className="block mt-4 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8 relative cursor-pointer">
+                <span className="block mt-4 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8 relative cursor-pointer">
                   {item.title.toUpperCase()}
                   {isMenuDropDownOpen && (
                     <div
@@ -88,9 +87,9 @@ const Nav: React.FC<Props> = ({ height }) => {
                       aria-labelledby="menu-button"
                       tabIndex="-1"
                     >
-                      <div className="py-3 px-6 text-left" role="none">
+                      <div className="text-left" role="none">
                         {categories.map((category, i) => (
-                          <div key={i} className="py-3">
+                          <div key={i} className="px-6 py-3 hover:bg-gray-100">
                             <Link href={`/category/${category.slug}`}>
                               {category.title}
                             </Link>
@@ -99,7 +98,7 @@ const Nav: React.FC<Props> = ({ height }) => {
                       </div>
                     </div>
                   )}
-                </a>
+                </span>
               </div>
             )}
           </>

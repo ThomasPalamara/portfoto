@@ -6,6 +6,7 @@ import Nav from '../components/Navigation/Nav';
 import { PhotoContextProvider } from '../components/Contexts/PhotoContext';
 import { GetStaticProps } from 'next';
 import ImageKit from 'imagekit';
+import { PopupContextProvider } from '../components/Contexts/PopupContext';
 
 interface Props extends AppProps {
   props: {
@@ -23,19 +24,19 @@ function MyApp({ Component, pageProps, props: { results } }: Props) {
       transformationPosition="path"
       authenticationEndpoint="http://www.yourserver.com/auth"
     >
-      <PhotoContextProvider value={results}>
-        <div className="body h-full max-h-screen px-20">
+      <PopupContextProvider>
+        <div className="body h-full min-h-screen px-10">
           <Nav height={navHeight} />
           <div
             className="w-full p-0"
-            style={{ height: `calc(100vh - ${navHeight + footerHeight}px)` }}
+            // style={{ height: `calc(100vh - ${navHeight + footerHeight}px)` }}
           >
             <Component {...pageProps} />
           </div>
 
           <Nav height={footerHeight} />
         </div>
-      </PhotoContextProvider>
+      </PopupContextProvider>
     </IKContext>
   );
 }
