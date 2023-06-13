@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ImageContainer from '../ImageContainer';
+import useSWR from 'swr';
 
 type Props = {
   current: Photo['fileId'];
@@ -9,9 +10,46 @@ type Props = {
 const controlClasses = 'z-50 bg-white p-2 cursor-pointer';
 
 const Popup = ({ photos, current, closePopup }: Props): JSX.Element => {
-  const [currentPhoto, setCurrentPhoto] = React.useState<Photo | undefined>(
-    photos.find((photo) => photo.fileId === current)
+  const [currentPhoto, setCurrentPhoto] = useState<Photo>(
+    photos.find((photo) => photo.fileId === current) || photos[0]
   );
+  // const [metadata, setMetadata] = useState<{ [key: string]: FileMetadata }>({});
+  // console.log('metadata :', metadata);
+  // useEffect(() => {
+  //   // get index of current photo
+  //   const currentIndex = photos.findIndex(
+  //     (photo) => photo.fileId === currentPhoto?.fileId
+  //   );
+  //   // array of ids for the current photo and the next and previous photos
+  //   const ids = [
+  //     ...photos
+  //       .slice(currentIndex - 1, currentIndex + 2)
+  //       .map((photo) => photo.fileId),
+  //   ];
+  //   let meta = {} as { [key: string]: FileMetadata };
+  //   console.log('ids :', ids);
+  //   const promises = ids.map((id, i) => {
+  //     if (id in metadata) return;
+  //     else {
+  //       return fetch(`/api/getMetadata?id=${id}`).then((res) => {id, res.json()});
+  //       // meta[id] = res;
+  //     }
+  //   });
+  //   if (promises.length > 0) {
+  //     Promise.all(promises).then((res) => {
+  //       meta = res;
+  //     });
+  //     setMetadata(meta);
+  //   }
+  // }, [currentPhoto]);
+
+  // useEffect(() => {
+  //   fetch(`/api/getFlickrImages`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log('data :', data);
+  //     });
+  // }, []);
 
   const nexStep = () => {
     const currentIndex = photos.findIndex(
@@ -56,7 +94,6 @@ const Popup = ({ photos, current, closePopup }: Props): JSX.Element => {
           style={{ height: '80%' }}
         >
           <ImageContainer photo={currentPhoto} />
-          <div className="bg-white px-4 py-6">Text</div>
         </div>
         <div className={controlClasses} onClick={nexStep}>
           Next

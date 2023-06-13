@@ -1,7 +1,7 @@
 import ImageKit from 'imagekit';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React, { useEffect, useRef } from 'react';
-import { usePopup } from '../../components/Contexts/PopupContext';
+import { openPopUp } from '../../components/Contexts/PopupContext';
 import ImageContainer from '../../components/ImageContainer';
 import { gutter } from '../../utils/constants';
 
@@ -9,7 +9,7 @@ type Props = { photos: Photo[]; meta: any };
 
 const Category: React.FC<Props> = ({ photos, meta }) => {
   console.log('meta :', meta);
-  const { openPopup } = usePopup(photos);
+  //open popup hook
   React.useEffect(() => {
     const importIsotop = async () => {
       const Isotope = (await import('isotope-layout')).default;
@@ -64,8 +64,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     path: 'dunkeld_forest',
   });
 
-  const meta = await imagekit.getFileMetadata(result[0].fileId);
-  return { props: { photos: result, meta: meta } };
+  console.log('result :', result);
+  return { props: { photos: result } };
 };
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
