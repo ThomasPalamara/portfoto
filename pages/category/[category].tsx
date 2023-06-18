@@ -1,6 +1,6 @@
 import ImageKit from 'imagekit';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ImageContainer from '../../components/ImageContainer';
 import { gutter } from '../../utils/constants';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,29 +8,23 @@ import { Mousewheel } from 'swiper';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/mousewheel';
+import GallerySlide from '../../components/Gallery/GallerySlide';
+import GalleryGrid from '../../components/Gallery/GalleryGrid';
+import GalleryControl from '../../components/Gallery/GalleryControl';
 
 type Props = { photos: Photo[]; meta: any };
 
 const Category: React.FC<Props> = ({ photos }) => {
+  const [grid, setGrid] = useState(false);
   return (
-    <div className="overflow-x-scroll overflow-y-hidden h-full w-full">
-      <Swiper
-        modules={[Mousewheel]}
-        spaceBetween={gutter}
-        className="h-full"
-        slidesPerView={'auto'}
-        centeredSlides
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
-        mousewheel={{ sensitivity: 0 }}
-      >
-        {photos.map((photo, i) => (
-          <SwiperSlide key={photo.fileId}>
-            <ImageContainer photo={photo} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    <>
+      <GalleryControl grid={grid} setGrid={setGrid} />
+      {grid ? (
+        <GalleryGrid photos={photos} />
+      ) : (
+        <GallerySlide photos={photos} />
+      )}
+    </>
   );
 };
 
