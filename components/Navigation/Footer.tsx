@@ -37,7 +37,6 @@ const Nav: React.FC<Props> = ({ height }) => {
       className="flex items-center justify-between flex-wrap py-6 font-extralight text-black text-xs"
       style={{ height: height }}
     >
-      ``
       <div className="flex items-center flex-shrink-0 mr-6 text-xs">
         © {new Date().getFullYear()} . All Rights Reserved.{' '}
         <span

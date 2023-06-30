@@ -1,15 +1,19 @@
 export const gutter = 15;
 export const categories = [
   {
-    title: 'Wildlife',
-    slug: 'wildlife',
+    title: 'Lofoten',
+    slug: 'lofoten',
   },
   {
-    title: 'Nature',
-    slug: 'nature',
+    title: "London's parks",
+    slug: 'london-parks',
   },
   {
-    title: 'People',
-    slug: 'people',
+    title: 'Northern lights',
+    slug: 'northern-lights',
+  },
+  {
+    title: "Dunkeld's forest",
+    slug: 'dunkeld-forest',
   },
 ];
