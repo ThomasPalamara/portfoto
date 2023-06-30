@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { gutter } from '../utils/constants';
 import { IKImage } from 'imagekitio-react';
 
-type Props = any;
+type Props = {
+  photo: Partial<Photo> & { filePath: string };
+  onClick?: (arg0: any) => void;
+};
 
-const ImageContainer: React.FC<Props> = ({ photo, onClick }) => {
+const ImageContainer = ({ photo, onClick }: Props) => {
   const [open, setOpen] = useState(false);
   return (
     <figure
