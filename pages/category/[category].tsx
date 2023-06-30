@@ -15,7 +15,12 @@ import GalleryControl from '../../components/Gallery/GalleryControl';
 type Props = { photos: Photo[]; meta: any };
 
 const Category: React.FC<Props> = ({ photos }) => {
-  const [grid, setGrid] = useState(false);
+  const [grid, setGrid] = useState(
+    typeof window !== 'undefined'
+      ? JSON.parse(localStorage.getItem('grid') || 'false')
+      : false
+  );
+  console.log('grid :', grid);
   return (
     <>
       <GalleryControl grid={grid} setGrid={setGrid} />
@@ -36,10 +41,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     privateKey: process.env.IK_PRIVATE_KEY || '',
     urlEndpoint: process.env.NEXT_PUBLIC_IK_URL_ENDPOINT || '',
   });
+
+  let category = params?.category;
+  if (Array.isArray(category)) {
+    category = category[0];
+  }
+
   const result = await imagekit.listFiles({
     skip: 0,
     limit: 100,
-    path: 'dunkeld_forest',
+    path: category?.replace('-', '_'),
   });
 
   const meta = await imagekit.getFileMetadata('611fd7689dbb186d693ae1ae');

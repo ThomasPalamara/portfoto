@@ -3,7 +3,6 @@ import ImageContainer from '../../components/ImageContainer';
 import { gutter } from '../../utils/constants';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel } from 'swiper';
-import { IKImage } from 'imagekitio-react';
 
 type Props = {
   photos: Photo[];
@@ -16,19 +15,15 @@ const GallerySlide = ({ photos }: Props) => {
         modules={[Mousewheel]}
         spaceBetween={gutter}
         className="h-full"
-        centeredSlides={true}
         slidesPerView={'auto'}
+        centeredSlides
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
         mousewheel={{ sensitivity: 0 }}
       >
         {photos.map((photo, i) => (
           <SwiperSlide key={photo.fileId}>
-            <IKImage
-              // className="h-full m-auto"
-              path={photo.filePath}
-              lqip={{ active: true, quality: 20 }}
-            />
+            <ImageContainer photo={photo} />
           </SwiperSlide>
         ))}
       </Swiper>

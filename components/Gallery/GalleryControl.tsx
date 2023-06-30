@@ -31,14 +31,20 @@ const GalleryControl = ({ setGrid, grid }: Props) => {
       <span
         className={buttonStyle}
         style={{ background: !grid ? '#292929' : '#2d91f4' }}
-        onClick={() => setGrid(true)}
+        onClick={() => {
+          setGrid(true);
+          localStorage.setItem('grid', 'true');
+        }}
       >
         <GridView fontSize="small" {...(grid && { sx: { color: 'white' } })} />
       </span>
       <span
         className={buttonStyle}
         style={{ background: grid ? '#292929' : '#2d91f4' }}
-        onClick={() => setGrid(false)}
+        onClick={() => {
+          setGrid(false);
+          localStorage.setItem('grid', 'false');
+        }}
       >
         <ViewCarouselOutlined
           fontSize="small"
