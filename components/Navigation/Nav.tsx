@@ -64,10 +64,12 @@ const Nav: React.FC<Props> = ({ height }) => {
                 key={i}
                 className="flex items-center justify-center text-center"
               >
-                <Link href={`${item.slug}`} passHref>
-                  <a className="block mt-4 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8">
-                    {item.title.toUpperCase()}
-                  </a>
+                <Link
+                  href={`${item.slug}`}
+                  className='className="block mt-4 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8'
+                  passHref
+                >
+                  {item.title.toUpperCase()}
                 </Link>
               </div>
             ) : (
