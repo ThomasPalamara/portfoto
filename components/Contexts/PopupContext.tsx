@@ -24,7 +24,7 @@ export const usePopup = (photos: Photo[]) => {
   return context;
 };
 
-const Provider: React.FC = ({ children }) => {
+const Provider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [photos, setPhotos] = useState<[] | Photo[]>([]);
   const [current, setCurrent] = useState<null | Photo['fileId']>(null);

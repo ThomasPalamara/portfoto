@@ -34,21 +34,19 @@ const Nav: React.FC<Props> = ({ height }) => {
       </div>
       <div className="flex h-full">
         {socialItems.map((item, i) => (
-          <>
-            <div
-              key={i}
-              className="flex items-center justify-center text-center px-1"
+          <div
+            key={i}
+            className="flex items-center justify-center text-center px-1"
+          >
+            <a
+              className="cursor-pointer"
+              target="_blank"
+              href={item.link}
+              rel="noreferrer"
             >
-              <a
-                className="cursor-pointer"
-                target="_blank"
-                href={item.link}
-                rel="noreferrer"
-              >
-                <item.icon fontSize="small" sx={{ color: '#666' }} />
-              </a>
-            </div>
-          </>
+              <item.icon fontSize="small" sx={{ color: '#666' }} />
+            </a>
+          </div>
         ))}
       </div>
     </nav>

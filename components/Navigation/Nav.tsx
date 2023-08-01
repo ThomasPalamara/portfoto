@@ -58,12 +58,9 @@ const Nav: React.FC<Props> = ({ height }) => {
 
       <div className="flex h-full">
         {navItems.map((item, i) => (
-          <>
+          <div key={i}>
             {!item.isDropdown ? (
-              <div
-                key={i}
-                className="flex items-center justify-center text-center"
-              >
+              <div className="flex items-center justify-center text-center">
                 <Link
                   href={`${item.slug}`}
                   className="nav__link block mt-4 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8"
@@ -74,7 +71,6 @@ const Nav: React.FC<Props> = ({ height }) => {
               </div>
             ) : (
               <div
-                key={i}
                 className="flex items-center justify-center text-center"
                 onMouseOver={() => setMenuDropDownOpen(true)}
                 ref={dropdownRef}
@@ -110,7 +106,7 @@ const Nav: React.FC<Props> = ({ height }) => {
                 </Link>
               </div>
             )}
-          </>
+          </div>
         ))}
       </div>
     </nav>

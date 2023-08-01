@@ -12,6 +12,7 @@ type Props = {
 };
 
 const GallerySlide = ({ photos }: Props) => {
+  const HScroll = HorizontalScroll as any;
   const { openPopup } = usePopup(photos);
   const router = useRouter();
 
@@ -20,8 +21,7 @@ const GallerySlide = ({ photos }: Props) => {
 
   return (
     <div className=" h-full w-full">
-      {/* @ts-expect-error */}
-      <HorizontalScroll reverseScroll>
+      <HScroll reverseScroll>
         <div
           className="bg-white py-10 px-8 flex-shrink-0"
           style={{ width: '350px' }}
@@ -43,7 +43,7 @@ const GallerySlide = ({ photos }: Props) => {
               onClick={() => openPopup(photo.fileId)}
             />
           ))}
-      </HorizontalScroll>
+      </HScroll>
     </div>
   );
 };
