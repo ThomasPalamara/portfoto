@@ -13,8 +13,7 @@
 body,
 html {
   font-family: Poppins, sans-serif;
-  color: #ccc;
-  letter-spacing: 2px;
+  color: #000;
 }
 .hero {
   /* background-image: url('../public/main.jpg'); */
@@ -45,6 +44,7 @@ h4,
 h5,
 h6 {
   color: #434344;
+  letter-spacing: 2px;
 }
 
 #app {
@@ -57,7 +57,7 @@ body {
 }
 
 body {
-  //background: #eee;
+  background: #eee;
   font-size: 14px;
   color: #000;
   margin: 0;
@@ -69,14 +69,11 @@ body {
   height: 100%;
 }
 
-.swiper-slide {
+ .swiper-slide {
   text-align: center;
-  font-size: 18px;
-  //background: #eee;
+  background: #eee;
 
-  /* Center slide text vertically */
-  width: 80% !important;
-  box-sizing: border-box;
+ box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -89,11 +86,68 @@ body {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-}
+} 
 
 .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.hero{
+  transition: all .2s ease;
+}
+
+.hero:hover{
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+}
+
+.hero:hover .hero__title{
+  display: flex;
+}
+
+.hero__dash{
+  transition: all .7s ease;
+}
+
+.hero__link:hover .hero__dash{
+  margin: 0px 3rem;
+}
+
+.nav__link{
+  background-image: linear-gradient(
+    to right,
+    #292929,
+    #292929 50%,
+    #000 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav__link:before {
+  content: '';
+  background: #292929;
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  transition: all 0.2s ease-in-out;
+font-weight: normal;
+}
+
+.nav__link:hover {
+ background-position: 0;
+}
+
+.nav__link:hover::before {
+  width:100%;
 }

@@ -1,51 +1,42 @@
-import ImageKit from 'imagekit';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React, { useEffect, useRef } from 'react';
-// import { openPopUp } from '../Contexts/PopupContext';
+import { openPopUp } from '../Contexts/PopupContext';
 import ImageContainer from '../../components/ImageContainer';
-import { gutter } from '../../utils/constants';
+import { categories, gutter } from '../../utils/constants';
+import { IKImage } from 'imagekitio-react';
+import Masonry from '@mui/lab/Masonry';
+import { useRouter } from 'next/router';
+import Title from '../Title';
 
 type Props = { photos: Photo[] };
 
 const Category: React.FC<Props> = ({ photos }) => {
-  //open popup hook
-  React.useEffect(() => {
-    const importIsotop = async () => {
-      const Isotope = (await import('isotope-layout')).default;
+  const router = useRouter();
 
-      new Isotope('.grid', {
-        itemSelector: '.grid-item',
-        masonry: {
-          columnWidth: '.grid-sizer',
-          gutter: '.grid-gutter',
-        },
-      });
-      console.log('Isotop :', Isotope);
-    };
-    importIsotop();
-  }, []);
+  const arrPath = router.asPath.split('/');
+  const page = categories.find((e) => arrPath[arrPath.length - 1] === e.slug);
 
   return (
-    <ul className="grid">
-      <div className="grid-sizer" style={{ width: '23%' }} />
-      <div className="grid-gutter" style={{ width: '2%' }} />
+    <Masonry columns={4} spacing={2}>
+      <div className="bg-white pt-8 pb-12 px-7 " style={{ width: '32%' }}>
+        <Title title={page?.title || ''} />
+        <p className="font-light trackertext-sm">{page?.description}</p>
+      </div>
       {photos.map((photo) => (
         <div
           key={photo.fileId}
-          className="grid-item"
           style={{
-            width: '23%',
-            // height: (photo.height * 500) / photo.width,
+            width: '32%',
             marginBottom: gutter,
           }}
         >
           <ImageContainer
             photo={photo}
-            // onClick={() => openPopUp(photo.fileId)}
+            onClick={() => openPopup(photo.fileId)}
           />
         </div>
       ))}
-    </ul>
+    </Masonry>
   );
 };
 

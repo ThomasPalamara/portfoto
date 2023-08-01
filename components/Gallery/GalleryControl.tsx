@@ -36,7 +36,7 @@ const GalleryControl = ({ setGrid, grid }: Props) => {
           localStorage.setItem('grid', 'true');
         }}
       >
-        <GridView fontSize="small" {...(grid && { sx: { color: 'white' } })} />
+        <GridView fontSize="small" sx={{ color: 'white' }} />
       </span>
       <span
         className={buttonStyle}
@@ -46,10 +46,7 @@ const GalleryControl = ({ setGrid, grid }: Props) => {
           localStorage.setItem('grid', 'false');
         }}
       >
-        <ViewCarouselOutlined
-          fontSize="small"
-          {...(!grid && { sx: { color: 'white' } })}
-        />
+        <ViewCarouselOutlined fontSize="small" sx={{ color: 'white' }} />
       </span>
     </div>
   );

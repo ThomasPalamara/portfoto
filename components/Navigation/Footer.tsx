@@ -1,23 +1,12 @@
 import React, { useState, useRef } from 'react';
-import Link from 'next/link';
 import { useOnHoverOutside } from '../../utils/hooks';
-import { categories } from '../../utils/constants';
-import { Instagram, LinkedIn, MailOutline } from '@mui/icons-material';
+import { Instagram, LinkedIn } from '@mui/icons-material';
 
 type Props = {
   height: number | string;
 };
 
 const Nav: React.FC<Props> = ({ height }) => {
-  const dropdownRef = useRef(null);
-  const [isMenuDropDownOpen, setMenuDropDownOpen] = useState(false);
-
-  const closeHoverMenu = () => {
-    setMenuDropDownOpen(false);
-  };
-
-  useOnHoverOutside(dropdownRef, closeHoverMenu);
-
   const socialItems = [
     {
       icon: Instagram,
@@ -26,10 +15,6 @@ const Nav: React.FC<Props> = ({ height }) => {
     {
       icon: LinkedIn,
       link: 'https://www.linkedin.com/in/thomas-palamara-a8ab36a7/',
-    },
-    {
-      icon: MailOutline,
-      link: 'mailto:palamara.thomas@gmail.com',
     },
   ];
   return (
@@ -47,7 +32,6 @@ const Nav: React.FC<Props> = ({ height }) => {
             height: '20px',
           }}
         />{' '}
-        palamara.thomas@gmail.com
       </div>
       <div className="flex h-full">
         {socialItems.map((item, i) => (

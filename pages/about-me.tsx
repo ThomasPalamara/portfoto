@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
+import Title from '../components/Title';
 
-const aboutMe = () => {
+const AboutMe = () => {
   return (
     <div className="flex">
       <div className="w-full relative overflow-hidden">
@@ -14,21 +15,20 @@ const aboutMe = () => {
           style={{ maxWidth: 'unset' }}
         />
       </div>
-      <div className="bg-dark-gray px-6 py-12 text-xs font-extralight text-white">
-        <h1 className="text-2xl text-white font-bold">About Me</h1>
-        <hr className="w-20 h-1 mr-auto my-4 bg-gray-100 border-0 rounded md:my-6" />
+      <div className="bg-dark-gray px-8 py-12 text-base tracking-wide font-extralight text-white leading-normal">
+        <Title color="white" title="About me" />
         <p className="pb-4">
           Hello, I&apos;m Thomas, a passionate wildlife photographer captivated
           by the natural world&apos;s beauty. My journey began in 2021 during my
           hikes, surrounded by breathtaking landscapes and fascinating wildlife,
           I wanted to capture and share these mindful moments.
-        </p>{' '}
+        </p>
         <p className="pb-4">
           As a self-taught photographer, I hone my skills through practice and
           exploration. Wildlife photography has become my specialization,
           allowing me to connect with the local fauna in parks and nature
           reserves.
-        </p>{' '}
+        </p>
         <p className="pb-4">
           What truly inspires me is the work of photographers who strive to make
           a difference for the animals they capture through their lenses. It's
@@ -46,4 +46,4 @@ const aboutMe = () => {
   );
 };
 
-export default aboutMe;
+export default AboutMe;

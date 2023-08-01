@@ -25,15 +25,15 @@ const Nav: React.FC<Props> = ({ height }) => {
     {
       title: 'Portfolio',
       slug: 'portfolio',
-      isDropdown: true,
+      isDropdown: false,
     },
     {
       title: 'About Me',
-      slug: 'about-me',
+      slug: '/about-me',
     },
     {
       title: 'Contact',
-      slug: 'contact',
+      slug: '/contact',
     },
   ];
   return (
@@ -66,7 +66,7 @@ const Nav: React.FC<Props> = ({ height }) => {
               >
                 <Link
                   href={`${item.slug}`}
-                  className='className="block mt-4 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8'
+                  className="nav__link block mt-4 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8"
                   passHref
                 >
                   {item.title.toUpperCase()}
@@ -79,7 +79,11 @@ const Nav: React.FC<Props> = ({ height }) => {
                 onMouseOver={() => setMenuDropDownOpen(true)}
                 ref={dropdownRef}
               >
-                <span className="block mt-4 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8 relative cursor-pointer">
+                <Link
+                  href={`${item.slug}`}
+                  passHref
+                  className="nav__link block mt-4 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8 relative cursor-pointer"
+                >
                   {item.title.toUpperCase()}
                   {isMenuDropDownOpen && (
                     <div
@@ -87,12 +91,15 @@ const Nav: React.FC<Props> = ({ height }) => {
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="menu-button"
-                      tabIndex="-1"
+                      tabIndex={-1}
                     >
                       <div className="text-left" role="none">
                         {categories.map((category, i) => (
                           <div key={i} className="px-6 py-3 hover:bg-gray-100">
-                            <Link href={`/category/${category.slug}`}>
+                            <Link
+                              className="text-black"
+                              href={`/category/${category.slug}`}
+                            >
                               {category.title}
                             </Link>
                           </div>
@@ -100,7 +107,7 @@ const Nav: React.FC<Props> = ({ height }) => {
                       </div>
                     </div>
                   )}
-                </span>
+                </Link>
               </div>
             )}
           </>

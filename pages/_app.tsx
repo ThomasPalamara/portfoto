@@ -4,8 +4,6 @@ import 'tailwindcss/tailwind.css';
 import '../styles/globals.css';
 import Nav from '../components/Navigation/Nav';
 import Footer from '../components/Navigation/Footer';
-import { PhotoContextProvider } from '../components/Contexts/PhotoContext';
-import { GetStaticProps } from 'next';
 import ImageKit from 'imagekit';
 import { PopupContextProvider } from '../components/Contexts/PopupContext';
 import PageTitle from '../components/Navigation/PageTitle';
@@ -17,15 +15,15 @@ interface Props extends AppProps {
   };
 }
 function MyApp({ Component, pageProps, props: { results } }: Props) {
-  const navHeight = 120;
-  const footerHeight = 75;
-  console.log('pageProps :', pageProps);
+  const navHeight = 100;
+  const footerHeight = 60;
+
+  const AnyComponent = Component as any;
 
   const router = useRouter();
-  console.log('router :', router);
+
   const arrPath = router.asPath.split('/');
   const pageName = arrPath[arrPath.length - 1].replace('-', ' ');
-  console.log('pageName :', pageName);
 
   return (
     <IKContext
@@ -39,10 +37,10 @@ function MyApp({ Component, pageProps, props: { results } }: Props) {
           <Nav height={navHeight} />
           <PageTitle title={pageName === '' ? 'home' : pageName} />
           <div
-            className="w-full p-0 m-0 overflow-x-hidden overflow-y-scroll"
+            className="w-full p-0 m-0 overflow-x-hidden flex"
             style={{ height: `calc(99vh - ${navHeight + footerHeight}px)` }}
           >
-            <Component {...pageProps} />
+            <AnyComponent {...pageProps} />
           </div>
 
           <Footer height={footerHeight} />

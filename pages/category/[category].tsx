@@ -1,11 +1,6 @@
 import ImageKit from 'imagekit';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import React, { useEffect, useRef, useState } from 'react';
-import ImageContainer from '../../components/ImageContainer';
-import { gutter } from '../../utils/constants';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel } from 'swiper';
-// Import Swiper styles
+import React, { useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/mousewheel';
 import GallerySlide from '../../components/Gallery/GallerySlide';
@@ -53,8 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     path: category?.replace('-', '_'),
   });
 
-  const meta = await imagekit.getFileMetadata('611fd7689dbb186d693ae1ae');
-  return { props: { photos: result, meta: meta } };
+  return { props: { photos: result } };
 };
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
