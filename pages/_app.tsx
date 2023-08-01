@@ -52,15 +52,15 @@ function MyApp({ Component, pageProps, props: { results } }: Props) {
 export default MyApp;
 
 MyApp.getInitialProps = async () => {
-  var imageKit = new ImageKit({
-    publicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY || '',
-    privateKey: process.env.IK_PRIVATE_KEY || '',
-    urlEndpoint: process.env.NEXT_PUBLIC_IK_URL_ENDPOINT || '',
-  });
-  const results = await imageKit.listFiles({
-    skip: 0,
-    limit: 100,
-  });
+  // var imageKit = new ImageKit({
+  //   publicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY || '',
+  //   privateKey: process.env.IK_PRIVATE_KEY || '',
+  //   urlEndpoint: process.env.NEXT_PUBLIC_IK_URL_ENDPOINT || '',
+  // });
+  // const results = await imageKit.listFiles({
+  //   skip: 0,
+  //   limit: 100,
+  // });
 
-  return { props: { results } };
+  return { props: { results: [] } };
 };
