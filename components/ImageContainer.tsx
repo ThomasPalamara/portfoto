@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { gutter } from '../utils/constants';
 import { IKImage } from 'imagekitio-react';
 
 type Props = {

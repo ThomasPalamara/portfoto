@@ -1,5 +1,4 @@
-import ImageKit from 'imagekit';
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Popup from '../Popup/Popup';
 
 interface Toast {

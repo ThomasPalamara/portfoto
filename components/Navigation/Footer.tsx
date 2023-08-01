@@ -1,5 +1,4 @@
-import React, { useState, useRef } from 'react';
-import { useOnHoverOutside } from '../../utils/hooks';
+import React from 'react';
 import { Instagram, LinkedIn } from '@mui/icons-material';
 
 type Props = {

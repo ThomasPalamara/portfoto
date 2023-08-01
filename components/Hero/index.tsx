@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 
 const Hero: React.FC = () => {
-  const name = 'Thomas Palamara';
   const titleClasses = 'font-semibold letter-wide text-white';
   const dashClasses = 'hero__dash bg-white w-10 h-0.5 mx-4';
   return (
