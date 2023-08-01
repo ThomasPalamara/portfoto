@@ -10,18 +10,14 @@ import PageTitle from '../components/Navigation/PageTitle';
 import { useRouter } from 'next/router';
 
 interface Props extends AppProps {
-  // props: {
-  //   results: Photo[];
-  // };
+  props: {
+    results: any;
+  };
 }
-function MyApp({
-  //  props: { results }
-  Component,
-  pageProps,
-}: Props) {
+function MyApp({ props: { results }, Component, pageProps }: Props) {
   const navHeight = 100;
   const footerHeight = 60;
-
+  console.log('results :', results);
   const AnyComponent = Component as any;
 
   const router = useRouter();
@@ -55,16 +51,17 @@ function MyApp({
 }
 export default MyApp;
 
-// MyApp.getInitialProps = async () => {
-//   // var imageKit = new ImageKit({
-//   //   publicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY || '',
-//   //   privateKey: process.env.IK_PRIVATE_KEY || '',
-//   //   urlEndpoint: process.env.NEXT_PUBLIC_IK_URL_ENDPOINT || '',
-//   // });
-//   // const results = await imageKit.listFiles({
-//   //   skip: 0,
-//   //   limit: 100,
-//   // });
-
-//   return { props: { results: [] } };
-// };
+MyApp.getInitialProps = async () => {
+  //   // var imageKit = new ImageKit({
+  //   //   publicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY || '',
+  //   //   privateKey: process.env.IK_PRIVATE_KEY || '',
+  //   //   urlEndpoint: process.env.NEXT_PUBLIC_IK_URL_ENDPOINT || '',
+  //   // });
+  //   // const results = await imageKit.listFiles({
+  //   //   skip: 0,
+  //   //   limit: 100,
+  //   // });
+  const meta = await imagekit.getFileMetadata('611fd7689dbb186d693ae1ae');
+  console.log('meta :', meta);
+  return { props: { results: meta } };
+};
