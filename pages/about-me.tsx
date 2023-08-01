@@ -31,9 +31,9 @@ const AboutMe = () => {
         </p>
         <p className="pb-4">
           What truly inspires me is the work of photographers who strive to make
-          a difference for the animals they capture through their lenses. It's
-          my hope that some day, I can contribute to raising awareness and
-          appreciation for the wildlife that shares our planet.
+          a difference for the animals they capture through their lenses.
+          It&apos;s my hope that some day, I can contribute to raising awareness
+          and appreciation for the wildlife that shares our planet.
         </p>
         <p className="pb-4">
           While I may be a beginner in the field, I embrace the opportunity to
