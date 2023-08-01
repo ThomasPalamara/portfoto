@@ -61,7 +61,7 @@ MyApp.getInitialProps = async () => {
   //   //   skip: 0,
   //   //   limit: 100,
   //   // });
-  const meta = await imageKit.getFileMetadata('611fd7689dbb186d693ae1ae');
+  const meta = await imageKit.getFileMetadata('64c385cc06370748f2aea5ab');
   console.log('meta :', meta);
   return { props: { results: meta } };
 };
