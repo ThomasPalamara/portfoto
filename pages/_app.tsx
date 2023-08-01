@@ -52,16 +52,16 @@ function MyApp({ props: { results }, Component, pageProps }: Props) {
 export default MyApp;
 
 MyApp.getInitialProps = async () => {
-  //   // var imageKit = new ImageKit({
-  //   //   publicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY || '',
-  //   //   privateKey: process.env.IK_PRIVATE_KEY || '',
-  //   //   urlEndpoint: process.env.NEXT_PUBLIC_IK_URL_ENDPOINT || '',
-  //   // });
+  var imageKit = new ImageKit({
+    publicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY || '',
+    privateKey: process.env.IK_PRIVATE_KEY || '',
+    urlEndpoint: process.env.NEXT_PUBLIC_IK_URL_ENDPOINT || '',
+  });
   //   // const results = await imageKit.listFiles({
   //   //   skip: 0,
   //   //   limit: 100,
   //   // });
-  const meta = await imagekit.getFileMetadata('611fd7689dbb186d693ae1ae');
+  const meta = await imageKit.getFileMetadata('611fd7689dbb186d693ae1ae');
   console.log('meta :', meta);
   return { props: { results: meta } };
 };
