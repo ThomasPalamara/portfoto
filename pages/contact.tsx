@@ -9,7 +9,7 @@ const Contact = () => {
   const [done, setDone] = React.useState(false);
   const [error, setError] = React.useState(false);
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: any) => {
     e.preventDefault();
 
     if (form.current)
