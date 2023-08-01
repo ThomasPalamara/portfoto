@@ -10,11 +10,15 @@ import PageTitle from '../components/Navigation/PageTitle';
 import { useRouter } from 'next/router';
 
 interface Props extends AppProps {
-  props: {
-    results: Photo[];
-  };
+  // props: {
+  //   results: Photo[];
+  // };
 }
-function MyApp({ Component, pageProps, props: { results } }: Props) {
+function MyApp({
+  //  props: { results }
+  Component,
+  pageProps,
+}: Props) {
   const navHeight = 100;
   const footerHeight = 60;
 
