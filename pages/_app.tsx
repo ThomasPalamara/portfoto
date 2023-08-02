@@ -26,7 +26,7 @@ function MyApp({ props: { results }, Component, pageProps }: Props) {
   const arrPath = router.asPath.split('/');
   const pageName = arrPath[arrPath.length - 1].replace('-', ' ');
 
-  const fetcher = (url) =>
+  const fetcher = (url: string) =>
     fetch(`${url}?category=lofoten`).then((res) => res.json());
   const { data, error } = useSWR('/api/hello', fetcher);
   console.log('data :', data);
