@@ -8,8 +8,6 @@ import GallerySlide from '../../components/Gallery/GallerySlide';
 import GalleryGrid from '../../components/Gallery/GalleryGrid';
 import GalleryControl from '../../components/Gallery/GalleryControl';
 import useSWR from 'swr';
-import { useRouter } from 'next/router';
-
 import { usePathname } from 'next/navigation';
 
 const Category = () => {
@@ -18,10 +16,9 @@ const Category = () => {
       ? JSON.parse(localStorage.getItem('grid') || 'false')
       : false
   );
-  const router = useRouter();
+
   const pathname = usePathname();
-  console.log('pathname :', pathname);
-  const arrPath = router.asPath.split('/');
+
   const category =
     categories.find((e) => pathname?.split('/').slice(-1)[0] === e.slug) ||
     categories[0];
