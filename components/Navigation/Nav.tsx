@@ -24,7 +24,7 @@ const Nav: React.FC<Props> = ({ height }) => {
     },
     {
       title: 'Portfolio',
-      slug: 'portfolio',
+      slug: '/portfolio',
       isDropdown: false,
     },
     {

@@ -11,6 +11,7 @@ const portfolio = () => {
         {categories.map((category, i) => (
           <Link
             href={`category/${category.slug}`}
+            passHref
             key={i}
             className="bg-center bg-cover flex justify-center items-end pb-20"
             style={{
