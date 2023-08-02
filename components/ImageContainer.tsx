@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 type Props = {
   photo: Partial<Photo> & { filePath: string };
+  quality?: number;
   woWrapper?: boolean;
   onClick?: (arg0: any) => void;
   [key: string]: any;
@@ -10,6 +11,7 @@ type Props = {
 
 const ImageContainer = ({
   photo,
+  quality = 80,
   woWrapper = false,
   onClick,
   ...other
@@ -17,7 +19,9 @@ const ImageContainer = ({
   const comp = (
     <Image
       onClick={() => onClick && onClick(photo)}
-      src={'https://ik.imagekit.io/uiw3np2kr8ww' + photo.filePath}
+      src={
+        `https://ik.imagekit.io/uiw3np2kr8ww/tr:q-${quality}` + photo.filePath
+      }
       unoptimized
       alt=""
       width={0}

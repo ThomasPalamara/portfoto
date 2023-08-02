@@ -11,6 +11,7 @@ const AboutMe = () => {
           alt="picture of Thomas"
           width={0}
           height={0}
+          unoptimized
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-full w-auto"
           style={{ maxWidth: 'unset' }}
         />

@@ -26,6 +26,7 @@ const GalleryGrid: React.FC<Props> = ({ photos, category }) => {
         >
           <ImageContainer
             photo={photo}
+            quality={30}
             onClick={() => openPopup(photo.fileId)}
           />
         </div>
