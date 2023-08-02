@@ -3,57 +3,51 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import React, { useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/mousewheel';
+import { categories } from '../../utils/constants';
 import GallerySlide from '../../components/Gallery/GallerySlide';
 import GalleryGrid from '../../components/Gallery/GalleryGrid';
 import GalleryControl from '../../components/Gallery/GalleryControl';
+import useSWR from 'swr';
+import { useRouter } from 'next/router';
 
-type Props = { photos: Photo[]; meta: any };
+import { usePathname } from 'next/navigation';
 
-const Category: React.FC<Props> = ({ photos }) => {
+const Category = () => {
   const [grid, setGrid] = useState(
     typeof window !== 'undefined'
       ? JSON.parse(localStorage.getItem('grid') || 'false')
       : false
   );
-  console.log('grid :', grid);
+  const router = useRouter();
+  const pathname = usePathname();
+  console.log('pathname :', pathname);
+  const arrPath = router.asPath.split('/');
+  const category =
+    categories.find((e) => pathname?.split('/').slice(-1)[0] === e.slug) ||
+    categories[0];
+
+  const fetcher = (url: string) =>
+    fetch(`${url}?category=${pathname?.split('/').slice(-1)}`).then((res) =>
+      res.json()
+    );
+
+  const { data, isLoading, error } = useSWR(
+    pathname ? '/api/hello' : '',
+    fetcher
+  );
+
+  if (isLoading || !data || data.length === 0 || data.list.length === 0)
+    return null;
   return (
     <>
       <GalleryControl grid={grid} setGrid={setGrid} />
       {grid ? (
-        <GalleryGrid photos={photos} />
+        <GalleryGrid photos={data.list} category={category} />
       ) : (
-        <GallerySlide photos={photos} />
+        <GallerySlide photos={data.list} category={category} />
       )}
     </>
   );
 };
 
 export default Category;
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  var imagekit = new ImageKit({
-    publicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY || '',
-    privateKey: process.env.IK_PRIVATE_KEY || '',
-    urlEndpoint: process.env.NEXT_PUBLIC_IK_URL_ENDPOINT || '',
-  });
-
-  let category = params?.category;
-  if (Array.isArray(category)) {
-    category = category[0];
-  }
-
-  const result = await imagekit.listFiles({
-    skip: 0,
-    limit: 100,
-    path: category?.replace('-', '_'),
-  });
-
-  return { props: { photos: result } };
-};
-
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
-  return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: 'blocking', //indicates the type of fallback
-  };
-};

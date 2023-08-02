@@ -1,23 +1,16 @@
 import React from 'react';
 import ImageContainer from '../../components/ImageContainer';
-import { categories, gutter } from '../../utils/constants';
+import { gutter } from '../../utils/constants';
 import HorizontalScroll from 'react-scroll-horizontal';
 
 import { usePopup } from '../Contexts/PopupContext';
 import Title from '../Title';
-import { useRouter } from 'next/router';
 
-type Props = {
-  photos: Photo[];
-};
+type Props = { photos: Photo[]; category: Category };
 
-const GallerySlide = ({ photos }: Props) => {
+const GallerySlide: React.FC<Props> = ({ photos, category }) => {
   const HScroll = HorizontalScroll as any;
   const { openPopup } = usePopup(photos);
-  const router = useRouter();
-
-  const arrPath = router.asPath.split('/');
-  const page = categories.find((e) => arrPath[arrPath.length - 1] === e.slug);
 
   return (
     <div className=" h-full w-full">
@@ -26,9 +19,9 @@ const GallerySlide = ({ photos }: Props) => {
           className="bg-white py-10 px-8 flex-shrink-0"
           style={{ width: '350px' }}
         >
-          <Title title={page?.title || ''} />
+          <Title title={category?.title || ''} />
           <p className="font-light leading-loose trackertext-sm">
-            {page?.description}
+            {category?.description}
           </p>
         </div>
 

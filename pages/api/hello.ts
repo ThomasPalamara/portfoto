@@ -10,10 +10,11 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const category = !Array.isArray(req.query.category)
     ? req.query.category
     : req.query.category[0];
+  console.log('category :', category);
   var imagekit = new ImageKit({
     publicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY || '',
     privateKey: process.env.IK_PRIVATE_KEY || '',
-    urlEndpoint: process.env.NEXT_PUBLIC_IK_URL_ENDPOINT || '',
+    urlEndpoint: 'https://ik.imagekit.io/uiw3np2kr8ww/',
   });
 
   const list = await imagekit.listFiles({
@@ -21,6 +22,6 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     limit: 50,
     path: category?.replace('-', '_'),
   });
-
+  console.log('list', list);
   res.status(200).json({ list });
 };

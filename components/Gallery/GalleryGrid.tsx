@@ -1,25 +1,20 @@
 import React from 'react';
 import ImageContainer from '../../components/ImageContainer';
-import { categories, gutter } from '../../utils/constants';
+import { gutter } from '../../utils/constants';
 import Masonry from '@mui/lab/Masonry';
-import { useRouter } from 'next/router';
 import Title from '../Title';
 import { usePopup } from '../Contexts/PopupContext';
 
-type Props = { photos: Photo[] };
+type Props = { photos: Photo[]; category: Category };
 
-const Category: React.FC<Props> = ({ photos }) => {
-  const router = useRouter();
+const GalleryGrid: React.FC<Props> = ({ photos, category }) => {
   const { openPopup } = usePopup(photos);
-
-  const arrPath = router.asPath.split('/');
-  const page = categories.find((e) => arrPath[arrPath.length - 1] === e.slug);
 
   return (
     <Masonry columns={4} spacing={2}>
       <div className="bg-white pt-8 pb-12 px-7 " style={{ width: '32%' }}>
-        <Title title={page?.title || ''} />
-        <p className="font-light trackertext-sm">{page?.description}</p>
+        <Title title={category?.title || ''} />
+        <p className="font-light trackertext-sm">{category?.description}</p>
       </div>
       {photos.map((photo) => (
         <div
@@ -39,4 +34,4 @@ const Category: React.FC<Props> = ({ photos }) => {
   );
 };
 
-export default Category;
+export default GalleryGrid;

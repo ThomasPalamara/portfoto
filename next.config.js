@@ -8,4 +8,14 @@ module.exports = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ik.imagekit.io',
+        port: '',
+        pathname: '/uiw3np2kr8ww/**',
+      },
+    ],
+  },
 };
