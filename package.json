@@ -32,6 +32,7 @@
     "react-masonry-css": "^1.0.16",
     "react-scroll-horizontal": "^1.6.6",
     "swiper": "^8.4.6",
+    "swr": "^2.2.0",
     "tailwindcss": "^2.2.7"
   },
   "devDependencies": {

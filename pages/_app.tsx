@@ -9,6 +9,7 @@ import { PopupContextProvider } from '../components/Contexts/PopupContext';
 import PageTitle from '../components/Navigation/PageTitle';
 import { useRouter } from 'next/router';
 
+import useSWR from 'swr';
 interface Props extends AppProps {
   props: {
     results: any;
@@ -24,6 +25,12 @@ function MyApp({ props: { results }, Component, pageProps }: Props) {
 
   const arrPath = router.asPath.split('/');
   const pageName = arrPath[arrPath.length - 1].replace('-', ' ');
+
+  const fetcher = (url) =>
+    fetch(`${url}?category=lofoten`).then((res) => res.json());
+  const { data, error } = useSWR('/api/hello', fetcher);
+  console.log('data :', data);
+  console.log('error :', error);
 
   return (
     <IKContext
@@ -52,16 +59,15 @@ function MyApp({ props: { results }, Component, pageProps }: Props) {
 export default MyApp;
 
 MyApp.getInitialProps = async () => {
-  var imageKit = new ImageKit({
-    publicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY || '',
-    privateKey: process.env.IK_PRIVATE_KEY || '',
-    urlEndpoint: process.env.NEXT_PUBLIC_IK_URL_ENDPOINT || '',
-  });
+  //   // var imageKit = new ImageKit({
+  //   //   publicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY || '',
+  //   //   privateKey: process.env.IK_PRIVATE_KEY || '',
+  //   //   urlEndpoint: process.env.NEXT_PUBLIC_IK_URL_ENDPOINT || '',
+  //   // });
   //   // const results = await imageKit.listFiles({
   //   //   skip: 0,
   //   //   limit: 100,
   //   // });
-  const meta = await imageKit.getFileMetadata('64c385cc06370748f2aea5ab');
-  console.log('meta :', meta);
-  return { props: { results: meta } };
+  // const meta = await imagekit.getFileMetadata('611fd7689dbb186d693ae1ae');
+  return { props: { results: '' } };
 };
