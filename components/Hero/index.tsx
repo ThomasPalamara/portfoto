@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
           "url('https://ik.imagekit.io/uiw3np2kr8ww/DSC02174__Mmg8D0-W.jpg?updatedAt=1674689620421&ik-sdk-version=react-1.0.10')",
       }}
     >
-      <div className="hidden justify-center items-center flex-col h-full hero__title">
+      <div className="md:opacity-0 flex justify-center items-center text-center flex-col h-full hero__title">
         <h4 className={titleClasses}>My photography portfolio</h4>
         <div className="flex items-center hero__link">
           <div className={dashClasses} />

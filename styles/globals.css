@@ -99,11 +99,19 @@ body {
 }
 
 .hero:hover{
+  opacity: 1;
   box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
 }
 
+@media (max-width: 765px) {
+.hero{
+  opacity: 1;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+}
+}
+
 .hero:hover .hero__title{
-  display: flex;
+  opacity: 1;
 }
 
 .hero__dash{

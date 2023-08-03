@@ -1,21 +1,13 @@
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { useOnHoverOutside } from '../../utils/hooks';
-import { categories } from '../../utils/constants';
 
 type Props = {
   height: number | string;
 };
 
 const Nav: React.FC<Props> = ({ height }) => {
-  const dropdownRef = useRef(null);
-  const [isMenuDropDownOpen, setMenuDropDownOpen] = useState(false);
-
-  const closeHoverMenu = () => {
-    setMenuDropDownOpen(false);
-  };
-
-  useOnHoverOutside(dropdownRef, closeHoverMenu);
+  const [mobileNav, setMobileNav] = useState(false);
 
   const navItems = [
     {
@@ -37,77 +29,54 @@ const Nav: React.FC<Props> = ({ height }) => {
     },
   ];
   return (
-    <nav
-      className="flex items-center justify-between flex-wrap bg-teal-500 p-6"
-      style={{ height: height }}
-    >
-      <div className="flex items-center flex-shrink-0 mr-6">
-        <svg
-          className="fill-black h-8 w-8 mr-2"
-          width="54"
-          height="54"
-          viewBox="0 0 54 54"
-          xmlns="http://www.w3.org/2000/svg"
+    <nav className="border-gray-200 dark:bg-gray-900">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="https://flowbite.com/" className="flex items-center">
+          <img style={{ maxHeight: '30px' }} src="/logo.svg" alt="logo" />
+        </a>
+        <button
+          data-collapse-toggle="navbar-default"
+          type="button"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-sm md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-default"
+          aria-expanded="false"
+          onClick={() => setMobileNav(!mobileNav)}
         >
-          <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-        </svg>
-        <span className="font-semibold text-xl tracking-tight uppercase">
-          Thomas Palamara
-        </span>
-      </div>
-
-      <div className="flex h-full">
-        {navItems.map((item, i) => (
-          <div key={i}>
-            {!item.isDropdown ? (
-              <div className="flex items-center justify-center text-center">
+          <span className="sr-only">Open main menu</span>
+          <svg
+            className="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15"
+            />
+          </svg>
+        </button>
+        <div
+          className={`${!mobileNav && 'hidden'} w-full md:block md:w-auto`}
+          id="navbar-default"
+        >
+          <ul className="font-medium flex flex-col px-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent">
+            {navItems.map((item, i) => (
+              <li key={i}>
                 <Link
                   href={`${item.slug}`}
-                  className="nav__link block mt-4 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8"
+                  className="nav__link block my-2 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8"
                   passHref
                 >
                   {item.title.toUpperCase()}
                 </Link>
-              </div>
-            ) : (
-              <div
-                className="flex items-center justify-center text-center"
-                onMouseOver={() => setMenuDropDownOpen(true)}
-                ref={dropdownRef}
-              >
-                <Link
-                  href={`${item.slug}`}
-                  passHref
-                  className="nav__link block mt-4 lg:inline-block lg:mt-0 text-black font-extralight tracking-widest text-sm mr-8 relative cursor-pointer"
-                >
-                  {item.title.toUpperCase()}
-                  {isMenuDropDownOpen && (
-                    <div
-                      className="absolute left-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                      role="menu"
-                      aria-orientation="vertical"
-                      aria-labelledby="menu-button"
-                      tabIndex={-1}
-                    >
-                      <div className="text-left" role="none">
-                        {categories.map((category, i) => (
-                          <div key={i} className="px-6 py-3 hover:bg-gray-100">
-                            <Link
-                              className="text-black"
-                              href={`/category/${category.slug}`}
-                            >
-                              {category.title}
-                            </Link>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </Link>
-              </div>
-            )}
-          </div>
-        ))}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </nav>
   );

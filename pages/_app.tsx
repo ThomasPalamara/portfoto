@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }: Props) {
 
   return (
     <PopupContextProvider>
-      <div className="body h-full min-h-screen px-16">
+      <div className="body h-full min-h-screen px-1 md:px-16">
         <Nav height={navHeight} />
         <PageTitle title={pageName === '' ? 'home' : pageName} />
         <div
