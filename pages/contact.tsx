@@ -2,11 +2,14 @@ import React from 'react';
 import Title from '../components/Title';
 import emailjs from '@emailjs/browser';
 import { Alert } from '@mui/material';
+import { useIsMobile } from '../utils/hooks';
+import Image from 'next/image';
 
 const Contact = () => {
   const form = React.useRef<HTMLFormElement>(null);
   const [done, setDone] = React.useState(false);
   const [error, setError] = React.useState(false);
+  const isMobile = useIsMobile();
 
   const sendEmail = (e: any) => {
     e.preventDefault();
@@ -26,8 +29,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex">
-      <div className="bg-white pr-10 pl-12 py-12 text-base font-extralight overflow-scroll">
+    <div
+      className="flex flex-col md:flex-row w-full"
+      style={{ minHeight: isMobile ? 'unset' : '80%' }}
+    >
+      <div className="bg-white pr-10 pl-12 py-12 text-base font-extralight overflow-scroll flex flex-col justify-center">
         <Title title="Contact" />
         <p className="pb-2">
           Do not hesitate to contact me for whatever reason, a problem about the
@@ -105,9 +111,23 @@ const Contact = () => {
         )}
       </div>
       <div
-        className="w-full relative overflow-hidden bg-cover bg-center"
+        className="w-full relative overflow-hidden"
+        style={{ maxWidth: '700px' }}
+      >
+        <Image
+          src="/contact-ig.jpg"
+          alt="picture of Thomas"
+          width={0}
+          height={0}
+          unoptimized
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-full w-auto"
+          style={{ maxWidth: 'unset' }}
+        />
+      </div>
+      {/* <div
+        className="relative overflow-hidden bg-cover bg-center w-1/2"
         style={{ backgroundImage: 'url(/contact-ig.jpg)' }}
-      />
+      /> */}
     </div>
   );
 };

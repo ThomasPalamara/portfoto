@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useLayoutEffect } from 'react';
 
 export const useOnHoverOutside = (ref, handler) => {
   useEffect(() => {
@@ -35,7 +35,8 @@ export function useHorizontalScroll() {
   return elRef;
 }
 
-const getIsMobile = () => window.innerWidth <= 768;
+const getIsMobile = () =>
+  typeof window !== 'undefined' && window ? window.innerWidth <= 768 : false;
 
 export function useIsMobile() {
   const [isMobile, setIsMobile] = useState(getIsMobile());
@@ -54,3 +55,25 @@ export function useIsMobile() {
 
   return isMobile;
 }
+
+export const useIsOverflow = (ref, callback) => {
+  const [isOverflow, setIsOverflow] = useState(undefined);
+
+  useLayoutEffect(() => {
+    const { current } = ref;
+
+    const trigger = () => {
+      const hasOverflow = current.scrollHeight > current.clientHeight;
+
+      setIsOverflow(hasOverflow);
+
+      if (callback) callback(hasOverflow);
+    };
+
+    if (current) {
+      trigger();
+    }
+  }, [callback, ref]);
+
+  return isOverflow;
+};

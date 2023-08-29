@@ -25,7 +25,7 @@ export const categories = [
     Scotland's diverse beauty never fails to captivate me, leaving me yearning for more with each visit.`,
   },
   {
-    title: 'British coast',
-    slug: 'british-coast',
+    title: 'British coastline',
+    slug: 'british-coastline',
   },
 ];

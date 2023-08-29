@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ImageContainer from '../ImageContainer';
+import CloseIcon from '@mui/icons-material/Close';
 
 type Props = {
   current: Photo['fileId'];
@@ -56,10 +57,13 @@ const Popup = ({ photos, current, closePopup }: Props): JSX.Element => {
           Prev
         </div> */}
         <div
-          className="flex justify-center flex-col opacity-100 max-h-5/6"
+          className="flex justify-center flex-col opacity-100 max-h-5/6 relative"
           style={{ height: '90%' }}
         >
-          <ImageContainer photo={currentPhoto} />
+          <div>
+            <CloseIcon className="absolute right-4 top-12 text-white opacity-70" />
+            <ImageContainer photo={currentPhoto} woWrapper />
+          </div>
         </div>
         {/* <div className={controlClasses} onClick={nexStep}>
           Next

@@ -9,8 +9,10 @@ import GalleryGrid from '../../components/Gallery/GalleryGrid';
 import GalleryControl from '../../components/Gallery/GalleryControl';
 import useSWR from 'swr';
 import { usePathname } from 'next/navigation';
+import { useIsMobile } from '../../utils/hooks';
 
 const Category = () => {
+  const isMobile = useIsMobile();
   const [grid, setGrid] = useState(
     typeof window !== 'undefined'
       ? JSON.parse(localStorage.getItem('grid') || 'false')
@@ -45,8 +47,8 @@ const Category = () => {
     );
   return (
     <>
-      <GalleryControl grid={grid} setGrid={setGrid} />
-      {grid ? (
+      {!isMobile && <GalleryControl grid={grid} setGrid={setGrid} />}
+      {grid || isMobile ? (
         <GalleryGrid photos={data.list} category={category} />
       ) : (
         <GallerySlide photos={data.list} category={category} />

@@ -1,10 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
 import Title from '../components/Title';
+import { useIsMobile } from '../utils/hooks';
 
 const AboutMe = () => {
+  const isMobile = useIsMobile();
   return (
-    <div className="flex">
+    <div
+      className="flex flex-col md:flex-row"
+      style={{ minHeight: isMobile ? 'unset' : '80%' }}
+    >
       <div className="w-full relative overflow-hidden">
         <Image
           src="/about-me.jpg"
@@ -16,7 +21,7 @@ const AboutMe = () => {
           style={{ maxWidth: 'unset' }}
         />
       </div>
-      <div className="bg-dark-gray px-8 py-12 text-base tracking-wide font-extralight text-white leading-normal">
+      <div className="bg-dark-gray px-8 py-12 text-base tracking-wide font-extralight text-white leading-normal flex flex-col justify-center">
         <Title color="white" title="About me" />
         <p className="pb-4">
           Hello, I&apos;m Thomas, a passionate wildlife photographer captivated

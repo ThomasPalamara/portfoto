@@ -8,6 +8,7 @@ import ImageKit from 'imagekit';
 import { PopupContextProvider } from '../components/Contexts/PopupContext';
 import PageTitle from '../components/Navigation/PageTitle';
 import { useRouter } from 'next/router';
+import { useIsMobile } from '../utils/hooks';
 
 interface Props extends AppProps {
   props: {
@@ -21,18 +22,23 @@ function MyApp({ Component, pageProps }: Props) {
   const AnyComponent = Component as any;
 
   const router = useRouter();
+  const isMobile = useIsMobile();
 
   const arrPath = router.asPath.split('/');
   const pageName = arrPath[arrPath.length - 1].replace('-', ' ');
 
   return (
     <PopupContextProvider>
-      <div className="body h-full min-h-screen px-1 md:px-16">
+      <div className="body md:h-full min-h-screen px-1 md:px-16">
         <Nav height={navHeight} />
         <PageTitle title={pageName === '' ? 'home' : pageName} />
         <div
-          className="w-full p-0 m-0 overflow-x-hidden flex"
-          style={{ height: `calc(99vh - ${navHeight + footerHeight}px)` }}
+          className="w-full p-0 m-0 md:overflow-x-hidden flex"
+          style={{
+            height: isMobile
+              ? 'auto'
+              : `calc(99vh - ${navHeight + footerHeight}px)`,
+          }}
         >
           <AnyComponent {...pageProps} />
         </div>
