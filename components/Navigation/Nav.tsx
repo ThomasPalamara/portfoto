@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { useIsMobile, useOnHoverOutside } from '../../utils/hooks';
+import { useIsMobile } from '../../utils/hooks';
 
 type Props = {
   height: number | string;
@@ -8,7 +8,7 @@ type Props = {
 
 const Nav: React.FC<Props> = ({ height }) => {
   const [mobileNav, setMobileNav] = useState(false);
-  const isMobile = useIsMobile;
+  const isMobile = useIsMobile();
 
   const navItems = [
     {
