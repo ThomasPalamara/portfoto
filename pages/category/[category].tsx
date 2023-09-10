@@ -16,7 +16,7 @@ const Category = () => {
   const [grid, setGrid] = useState(
     typeof window !== 'undefined'
       ? JSON.parse(localStorage.getItem('grid') || 'false')
-      : false
+      : true
   );
 
   const pathname = usePathname();

@@ -2,13 +2,13 @@ import React from 'react';
 import { gutter, categories } from '../utils/constants';
 import HorizontalScroll from 'react-scroll-horizontal';
 import Link from 'next/link';
-import { useIsMobile, useIsOverflow } from '../utils/hooks';
+import { isMobile } from 'react-device-detect';
 
 const Portfolio = () => {
   const itemWidth = 450 + gutter * 2;
 
   const ref = React.useRef() as React.MutableRefObject<HTMLInputElement>;
-  const isMobile = useIsMobile();
+
   console.log('isMobile :', isMobile);
   const isOverflowed = isMobile
     ? false
@@ -16,7 +16,6 @@ const Portfolio = () => {
     ? window.innerWidth <= itemWidth * categories.length
     : false;
 
-  console.log('isOverflowed :', isOverflowed);
   const HScroll = HorizontalScroll as any;
 
   const categoryElements = () =>
