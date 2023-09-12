@@ -27,6 +27,7 @@ const PageTitle = (props: Props) => {
         alignItems: 'center',
         justifyContent: 'center',
         color: '#fff',
+        padding: '10px',
       }}
     >
       {props.title}
