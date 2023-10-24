@@ -32,7 +32,7 @@ const GallerySlide: React.FC<Props> = ({ photos, category }) => {
               woWrapper
               photo={photo}
               key={i}
-              quality={60}
+              quality={30}
               style={{ margin: `0 ${gutter}px` }}
               onClick={() => openPopup(photo.fileId)}
             />

@@ -27,6 +27,7 @@ const ImageContainer = ({
       width={0}
       height={0}
       className="h-full w-auto"
+      loading="lazy"
       {...other}
     />
   );
