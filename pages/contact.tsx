@@ -48,6 +48,7 @@ const Contact = () => {
           >
             @tomapalamara
           </a>
+          .
         </p>
 
         {error && (
@@ -111,10 +112,10 @@ const Contact = () => {
         )}
       </div>
       <div
-        className="w-full relative overflow-hidden"
-        style={{ maxWidth: '700px' }}
+        className="w-full relative overflow-hidden bg-cover bg-center"
+        style={{ maxWidth: '700px', backgroundImage: 'url("/contact-ig.jpg")' }}
       >
-        <Image
+        {/* <Image
           src="/contact-ig.jpg"
           alt="picture of Thomas"
           width={0}
@@ -122,7 +123,7 @@ const Contact = () => {
           unoptimized
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-full w-auto"
           style={{ maxWidth: 'unset' }}
-        />
+        /> */}
       </div>
       {/* <div
         className="relative overflow-hidden bg-cover bg-center w-1/2"
