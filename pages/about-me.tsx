@@ -5,19 +5,25 @@ import { useIsMobile } from '../utils/hooks';
 
 const AboutMe = () => {
   const isMobile = useIsMobile();
+  console.log('isMobile :', isMobile);
+  console.log(isMobile ? '' : 'flex flex-col md:flex-row');
   return (
     <div
-      className="flex flex-col md:flex-row"
+      className={isMobile ? '' : 'flex flex-col md:flex-row'}
       style={{ minHeight: isMobile ? 'unset' : '80%' }}
     >
-      <div className="w-full relative overflow-hidden">
+      <div
+        className={`w-full relative overflow-hidden ${isMobile ? 'h-44' : ''}`}
+      >
         <Image
           src="/about-me.jpg"
           alt="picture of Thomas"
           width={0}
           height={0}
           unoptimized
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-full w-auto"
+          className={`absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
+            isMobile ? 'w-full top-2/3' : 'w-auto h-full top-1/2'
+          }`}
           style={{ maxWidth: 'unset' }}
         />
       </div>

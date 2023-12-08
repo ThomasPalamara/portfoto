@@ -9,7 +9,6 @@ const Portfolio = () => {
 
   const ref = React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  console.log('isMobile :', isMobile);
   const isOverflowed = isMobile
     ? false
     : typeof window !== 'undefined' && window
@@ -17,6 +16,9 @@ const Portfolio = () => {
     : false;
 
   const HScroll = HorizontalScroll as any;
+
+  console.log('isOverflowed :', isOverflowed);
+  console.log('isMobile :', isMobile);
 
   const categoryElements = () =>
     categories.map((category, i) => (
@@ -26,7 +28,7 @@ const Portfolio = () => {
         key={i}
         className="bg-center bg-cover flex justify-center items-end pb-20 flex-shrink-0"
         style={{
-          width: isMobile ? '200px' : '450px',
+          width: '450px',
           margin: `0 ${gutter}px`,
           backgroundImage: `url(categories/${category.slug}.jpg)`,
         }}
@@ -37,9 +39,35 @@ const Portfolio = () => {
       </Link>
     ));
 
+  const mobileCategoryElements = () =>
+    categories.map((category, i) => (
+      <div
+        key={i}
+        className="bg-center bg-cover flex-shrink-0 w-1/2"
+        style={{
+          height: '300px',
+          padding: `${gutter}px`,
+        }}
+      >
+        <Link
+          href={`category/${category.slug}`}
+          passHref
+          className="bg-center bg-cover flex justify-center items-end pb-4 h-full w-full px-3"
+          style={{
+            backgroundImage: `url(categories/${category.slug}.jpg)`,
+          }}
+        >
+          <div className="bg-white shadow-xl py-2 px-5">
+            <h2>{category.title}</h2>
+          </div>
+        </Link>
+      </div>
+    ));
   return (
     <div className="h-full w-full flex justify-center" ref={ref}>
-      {isOverflowed ? (
+      {isMobile ? (
+        mobileCategoryElements()
+      ) : isOverflowed ? (
         <HScroll reverseScroll>{categoryElements()}</HScroll>
       ) : (
         categoryElements()

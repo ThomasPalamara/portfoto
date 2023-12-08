@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: Props) {
         <Nav height={navHeight} />
         <PageTitle title={pageName === '' ? 'home' : pageName} />
         <div
-          className="w-full p-0 m-0 md:overflow-x-hidden flex"
+          className="w-full p-0 m-0 overflow-x-hidden flex"
           style={{
             height: isMobile
               ? 'auto'

@@ -9,7 +9,7 @@ const Nav: React.FC<Props> = ({ height }) => {
   const socialItems = [
     {
       icon: Instagram,
-      link: 'https://www.instagram.com/tomapalamara/',
+      link: 'https://www.instagram.com/thomaspalamara.photography/',
     },
     {
       icon: LinkedIn,

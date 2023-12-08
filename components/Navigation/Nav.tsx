@@ -63,7 +63,9 @@ const Nav: React.FC<Props> = ({ height }) => {
         </svg>
       </button>
       <div
-        className={`${!mobileNav && 'hidden'} w-full md:block md:w-auto`}
+        className={`${
+          !mobileNav ? 'hidden' : 'shadow-lg'
+        } z-10 w-full md:block md:w-auto`}
         id="navbar-default"
       >
         <ul className="font-medium flex flex-col px-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-white md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent">
@@ -71,6 +73,7 @@ const Nav: React.FC<Props> = ({ height }) => {
             <li key={i}>
               <Link
                 href={`${item.slug}`}
+                onClick={() => setMobileNav(false)}
                 className="nav__link block my-2 lg:inline-block lg:my-0 text-black font-extralight tracking-widest text-sm mr-8"
                 passHref
               >
