@@ -26,7 +26,7 @@ const ImageContainer = ({
       alt=""
       width={0}
       height={0}
-      className="h-full w-auto"
+      className="h-full w-auto cursor-pointer"
       loading="lazy"
       {...other}
     />
