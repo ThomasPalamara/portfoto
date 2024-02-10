@@ -5,8 +5,6 @@ import { useIsMobile } from '../utils/hooks';
 
 const AboutMe = () => {
   const isMobile = useIsMobile();
-  console.log('isMobile :', isMobile);
-  console.log(isMobile ? '' : 'flex flex-col md:flex-row');
   return (
     <div
       className={isMobile ? '' : 'flex flex-col md:flex-row'}

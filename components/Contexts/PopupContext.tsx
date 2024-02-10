@@ -16,7 +16,6 @@ export const PopupContext = React.createContext<ContextProps | null>(null);
 
 export const usePopup = (photos: Photo[]) => {
   const context = useContext(PopupContext);
-  console.log('context :', context);
   if (context === null) {
     throw new Error('usePopup must be used within a PopupProvider');
   }
@@ -30,7 +29,6 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
   const [current, setCurrent] = useState<null | Photo['fileId']>(null);
   // function that set the state to true and take an array of photo and a current  photo id  as parameter
   const openPopup: ContextProps['openPopup'] = (currentPhoto) => {
-    console.log('openPopup :');
     setIsOpen(true);
     setCurrent(currentPhoto);
   };

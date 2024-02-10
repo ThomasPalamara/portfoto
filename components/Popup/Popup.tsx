@@ -39,7 +39,6 @@ const Popup = ({ photos, current, closePopup }: Props): JSX.Element => {
   return (
     <div
       onClick={() => {
-        console.log('click');
         closePopup();
       }}
       className="fixed bg-black bg-opacity-90 z-50 top-0 left-0 h-full w-full"

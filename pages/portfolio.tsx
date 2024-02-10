@@ -17,9 +17,6 @@ const Portfolio = () => {
 
   const HScroll = HorizontalScroll as any;
 
-  console.log('isOverflowed :', isOverflowed);
-  console.log('isMobile :', isMobile);
-
   const categoryElements = () =>
     categories.map((category, i) => (
       <Link
