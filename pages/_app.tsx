@@ -1,10 +1,8 @@
 import type { AppProps } from 'next/app';
-import { IKContext } from 'imagekitio-react';
 import 'tailwindcss/tailwind.css';
 import '../styles/globals.css';
 import Nav from '../components/Navigation/Nav';
 import Footer from '../components/Navigation/Footer';
-import ImageKit from 'imagekit';
 import { PopupContextProvider } from '../components/Contexts/PopupContext';
 import PageTitle from '../components/Navigation/PageTitle';
 import { useRouter } from 'next/router';

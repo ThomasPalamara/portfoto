@@ -3,6 +3,7 @@ import { gutter, categories } from '../utils/constants';
 import HorizontalScroll from 'react-scroll-horizontal';
 import Link from 'next/link';
 import { isMobile } from 'react-device-detect';
+import Head from 'next/head';
 
 const Portfolio = () => {
   const itemWidth = 450 + gutter * 2;
@@ -61,15 +62,20 @@ const Portfolio = () => {
       </div>
     ));
   return (
-    <div className="h-full w-full flex justify-center" ref={ref}>
-      {isMobile ? (
-        mobileCategoryElements()
-      ) : isOverflowed ? (
-        <HScroll reverseScroll>{categoryElements()}</HScroll>
-      ) : (
-        categoryElements()
-      )}
-    </div>
+    <>
+      <Head>
+        <title>Categories</title>
+      </Head>
+      <div className="h-full w-full flex justify-center" ref={ref}>
+        {isMobile ? (
+          mobileCategoryElements()
+        ) : isOverflowed ? (
+          <HScroll reverseScroll>{categoryElements()}</HScroll>
+        ) : (
+          categoryElements()
+        )}
+      </div>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ import HorizontalScroll from 'react-scroll-horizontal';
 import { usePopup } from '../Contexts/PopupContext';
 import Title from '../Title';
 
-type Props = { photos: Photo[]; category: Category };
+type Props = { photos?: Photo[]; category: Category };
 
 const GallerySlide: React.FC<Props> = ({ photos, category }) => {
   const HScroll = HorizontalScroll as any;

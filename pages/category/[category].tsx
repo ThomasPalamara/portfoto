@@ -10,9 +10,10 @@ import GalleryControl from '../../components/Gallery/GalleryControl';
 import useSWR from 'swr';
 import { usePathname } from 'next/navigation';
 import { useIsMobile } from '../../utils/hooks';
+import Head from 'next/head';
 
 const Category = () => {
-  const [data, setData] = useState<Photo[] | null>(null);
+  const [data, setData] = useState<Photo[] | undefined>(undefined);
   const [isLoading, setLoading] = useState(true);
   const pathname = usePathname();
   const isMobile = useIsMobile();
@@ -31,26 +32,18 @@ const Category = () => {
       });
   }, [pathname]);
 
-  console.log('data :', data);
   const category =
     categories.find((e) => pathname?.split('/').slice(-1)[0] === e.slug) ||
     categories[0];
 
-  if (isLoading || !data || data?.length === 0 || data.length === 0)
-    return (
-      <div
-        className="animate-spin inline-block w-8 h-8 border-[3px] border-current border-t-transparent text-blue-600 rounded-full"
-        role="status"
-        aria-label="loading"
-      >
-        <span className="sr-only">Loading...</span>
-      </div>
-    );
   return (
     <>
+      <Head>
+        <title>{pathname}</title>
+      </Head>
       {!isMobile && <GalleryControl grid={grid} setGrid={setGrid} />}
       {grid || isMobile ? (
-        <GalleryGrid photos={data} category={category} />
+        <GalleryGrid photos={data} isLoading={isLoading} category={category} />
       ) : (
         <GallerySlide photos={data} category={category} />
       )}
