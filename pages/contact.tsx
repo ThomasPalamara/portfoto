@@ -124,26 +124,15 @@ const Contact = () => {
             isMobile ? 'h-80' : ''
           }`}
         >
-          <Image
-            src="https://ik.imagekit.io/uiw3np2kr8ww/contact_qDbNusnok.jpg?updatedAt=1707574697089"
-            alt="picture of Thomas"
-            width={0}
-            height={0}
-            unoptimized
-            className={`absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
-              isMobile ? 'w-full top-2/3' : 'w-auto h-full top-1/2'
-            }`}
-            style={{ maxWidth: 'unset' }}
+          <div
+            className="w-full h-full relative overflow-hidden bg-cover bg-center"
+            style={{
+              maxWidth: '700px',
+              backgroundImage:
+                'url("https://ik.imagekit.io/uiw3np2kr8ww/contact_qDbNusnok.jpg?updatedAt=1707574697089")',
+            }}
           />
         </div>
-        {/* <div
-          className="w-full relative overflow-hidden bg-cover bg-center"
-          style={{
-            maxWidth: '700px',
-            backgroundImage:
-              'url("https://ik.imagekit.io/uiw3np2kr8ww/contact_qDbNusnok.jpg?updatedAt=1707574697089")',
-          }}
-        /> */}
       </div>
     </>
   );
