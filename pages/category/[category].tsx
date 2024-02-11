@@ -45,7 +45,7 @@ const Category = () => {
       {grid || isMobile ? (
         <GalleryGrid photos={data} isLoading={isLoading} category={category} />
       ) : (
-        <GallerySlide photos={data} category={category} />
+        <GallerySlide photos={data} isLoading={isLoading} category={category} />
       )}
     </>
   );

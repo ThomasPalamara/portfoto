@@ -38,9 +38,7 @@ const GalleryGrid: React.FC<Props> = ({ photos, category, isLoading }) => {
                 // random height between 150 and 300
                 height: Math.random() * 150 + 150,
               }}
-            >
-              {/* <div className="loader" /> */}
-            </div>
+            />
           )))}
       {photos &&
         photos.map((photo) => (
