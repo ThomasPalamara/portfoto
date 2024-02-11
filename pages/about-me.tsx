@@ -21,7 +21,7 @@ const AboutMe = () => {
           }`}
         >
           <Image
-            src="/about-me.jpg"
+            src="https://ik.imagekit.io/uiw3np2kr8ww/about_me.jpg?updatedAt=1687126468013"
             alt="picture of Thomas"
             width={0}
             height={0}

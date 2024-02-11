@@ -35,10 +35,12 @@ const Contact = () => {
         <title>Contact me</title>
       </Head>
       <div
-        className="flex flex-col md:flex-row w-full"
+        className={
+          isMobile ? 'flex flex-col-reverse' : 'flex flex-col md:flex-row'
+        }
         style={{ minHeight: isMobile ? 'unset' : '80%' }}
       >
-        <div className="bg-white pr-10 pl-12 py-12 text-base font-extralight overflow-scroll flex flex-col justify-center">
+        <div className="bg-white pr-10 pl-12 py-9 text-base font-extralight overflow-scroll flex flex-col justify-center">
           <Title title="Contact" />
           <p className="pb-2">
             Do not hesitate to contact me for whatever reason, a problem about
@@ -118,26 +120,30 @@ const Contact = () => {
           )}
         </div>
         <div
+          className={`w-full relative overflow-hidden ${
+            isMobile ? 'h-80' : ''
+          }`}
+        >
+          <Image
+            src="https://ik.imagekit.io/uiw3np2kr8ww/contact_qDbNusnok.jpg?updatedAt=1707574697089"
+            alt="picture of Thomas"
+            width={0}
+            height={0}
+            unoptimized
+            className={`absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
+              isMobile ? 'w-full top-2/3' : 'w-auto h-full top-1/2'
+            }`}
+            style={{ maxWidth: 'unset' }}
+          />
+        </div>
+        {/* <div
           className="w-full relative overflow-hidden bg-cover bg-center"
           style={{
             maxWidth: '700px',
-            backgroundImage: 'url("/contact-ig.jpg")',
+            backgroundImage:
+              'url("https://ik.imagekit.io/uiw3np2kr8ww/contact_qDbNusnok.jpg?updatedAt=1707574697089")',
           }}
-        >
-          {/* <Image
-          src="/contact-ig.jpg"
-          alt="picture of Thomas"
-          width={0}
-          height={0}
-          unoptimized
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-full w-auto"
-          style={{ maxWidth: 'unset' }}
         /> */}
-        </div>
-        {/* <div
-        className="relative overflow-hidden bg-cover bg-center w-1/2"
-        style={{ backgroundImage: 'url(/contact-ig.jpg)' }}
-      /> */}
       </div>
     </>
   );
