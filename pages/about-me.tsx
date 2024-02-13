@@ -3,13 +3,14 @@ import Image from 'next/image';
 import Title from '../components/Title';
 import { useIsMobile } from '../utils/hooks';
 import Head from 'next/head';
+import { siteTitle } from '../utils/constants';
 
 const AboutMe = () => {
   const isMobile = useIsMobile();
   return (
     <>
       <Head>
-        <title>About me</title>
+        <title>{'About me - ' + siteTitle}</title>
       </Head>
       <div
         className={isMobile ? '' : 'flex flex-col md:flex-row'}

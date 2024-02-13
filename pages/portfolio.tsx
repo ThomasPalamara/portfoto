@@ -1,5 +1,5 @@
 import React from 'react';
-import { gutter, categories } from '../utils/constants';
+import { gutter, categories, siteTitle } from '../utils/constants';
 import HorizontalScroll from 'react-scroll-horizontal';
 import Link from 'next/link';
 import { isMobile } from 'react-device-detect';
@@ -64,7 +64,7 @@ const Portfolio = () => {
   return (
     <>
       <Head>
-        <title>Categories</title>
+        <title>{'Portfolio - ' + siteTitle}</title>
       </Head>
       <div className="h-full w-full flex justify-center" ref={ref}>
         {isMobile ? (

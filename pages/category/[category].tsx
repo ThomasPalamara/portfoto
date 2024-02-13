@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import React, { useEffect, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/mousewheel';
-import { categories } from '../../utils/constants';
+import { categories, siteTitle } from '../../utils/constants';
 import GallerySlide from '../../components/Gallery/GallerySlide';
 import GalleryGrid from '../../components/Gallery/GalleryGrid';
 import GalleryControl from '../../components/Gallery/GalleryControl';
@@ -39,7 +39,7 @@ const Category = () => {
   return (
     <>
       <Head>
-        <title>{pathname}</title>
+        <title>{category.title + ' - ' + siteTitle}</title>
       </Head>
       {!isMobile && <GalleryControl grid={grid} setGrid={setGrid} />}
       {grid || isMobile ? (

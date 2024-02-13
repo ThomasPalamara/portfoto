@@ -1,3 +1,4 @@
+export const siteTitle = 'Thomas Palamara Photography';
 export const gutter = 15;
 export const categories = [
   {

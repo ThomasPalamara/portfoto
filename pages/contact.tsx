@@ -3,8 +3,8 @@ import Title from '../components/Title';
 import emailjs from '@emailjs/browser';
 import { Alert } from '@mui/material';
 import { useIsMobile } from '../utils/hooks';
-import Image from 'next/image';
 import Head from 'next/head';
+import { siteTitle } from '../utils/constants';
 
 const Contact = () => {
   const form = React.useRef<HTMLFormElement>(null);
@@ -32,7 +32,7 @@ const Contact = () => {
   return (
     <>
       <Head>
-        <title>Contact me</title>
+        <title>{'Contact me - ' + siteTitle}</title>
       </Head>
       <div
         className={
