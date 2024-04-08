@@ -7,13 +7,15 @@ type Props = {
   woWrapper?: boolean;
   onClick?: (arg0: any) => void;
   [key: string]: any;
+  onLoadingComplete?: (id: string) => void;
 };
 
 const ImageContainer = ({
   photo,
-  quality = 80,
+  quality = 20,
   woWrapper = false,
   onClick,
+  onLoadingComplete,
   ...other
 }: Props) => {
   const comp = (
@@ -26,8 +28,12 @@ const ImageContainer = ({
       alt=""
       width={0}
       height={0}
+      onLoad={() => {
+        onLoadingComplete && onLoadingComplete(photo.fileId);
+      }}
       className="h-full w-auto cursor-pointer"
-      loading="lazy"
+      loading="eager"
+      data-id={photo.fileId}
       {...other}
     />
   );

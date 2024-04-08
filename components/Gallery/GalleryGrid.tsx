@@ -27,7 +27,8 @@ const GalleryGrid: React.FC<Props> = ({ photos, category, isLoading }) => {
         </div>
       </div>
       {isLoading ||
-        (!photos &&
+        !photos ||
+        (photos.length === 0 &&
           [...Array(15)].map((_, i) => (
             <div
               key={i}
@@ -41,6 +42,7 @@ const GalleryGrid: React.FC<Props> = ({ photos, category, isLoading }) => {
             />
           )))}
       {photos &&
+        photos.length > 0 &&
         photos.map((photo) => (
           <div
             key={photo.fileId}
@@ -51,7 +53,7 @@ const GalleryGrid: React.FC<Props> = ({ photos, category, isLoading }) => {
           >
             <ImageContainer
               photo={photo}
-              quality={2}
+              quality={80}
               onClick={() => openPopup(photo.fileId)}
             />
           </div>

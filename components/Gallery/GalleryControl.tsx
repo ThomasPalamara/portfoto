@@ -29,8 +29,7 @@ const GalleryControl = ({ setGrid, grid }: Props) => {
       }}
     >
       <span
-        className={buttonStyle}
-        style={{ background: !grid ? '#292929' : '#2d91f4' }}
+        className={buttonStyle + ' ' + (!grid ? 'bg-gray-800' : 'bg-blue-500')}
         onClick={() => {
           setGrid(true);
           localStorage.setItem('grid', 'true');
@@ -39,8 +38,7 @@ const GalleryControl = ({ setGrid, grid }: Props) => {
         <GridView fontSize="small" sx={{ color: 'white' }} />
       </span>
       <span
-        className={buttonStyle}
-        style={{ background: grid ? '#292929' : '#2d91f4' }}
+        className={buttonStyle + ' ' + (grid ? 'bg-gray-800' : 'bg-blue-500')}
         onClick={() => {
           setGrid(false);
           localStorage.setItem('grid', 'false');

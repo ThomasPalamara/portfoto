@@ -17,13 +17,14 @@ const Category = () => {
   const [isLoading, setLoading] = useState(true);
   const pathname = usePathname();
   const isMobile = useIsMobile();
-  const [grid, setGrid] = useState(
-    typeof window !== 'undefined'
-      ? JSON.parse(localStorage.getItem('grid') || 'false')
-      : true
-  );
+  const [grid, setGrid] = useState(false);
 
   useEffect(() => {
+    setGrid(
+      typeof window !== 'undefined'
+        ? JSON.parse(localStorage.getItem('grid') || 'false')
+        : true
+    );
     fetch(`/api/hello?category=${pathname?.split('/').slice(-1)}`)
       .then((res) => res.json())
       .then((data) => {
@@ -36,17 +37,16 @@ const Category = () => {
     categories.find((e) => pathname?.split('/').slice(-1)[0] === e.slug) ||
     categories[0];
 
+  const Gallery = grid || isMobile ? GalleryGrid : GallerySlide;
+
   return (
     <>
       <Head>
         <title>{category.title + ' - ' + siteTitle}</title>
       </Head>
       {!isMobile && <GalleryControl grid={grid} setGrid={setGrid} />}
-      {grid || isMobile ? (
-        <GalleryGrid photos={data} isLoading={isLoading} category={category} />
-      ) : (
-        <GallerySlide photos={data} isLoading={isLoading} category={category} />
-      )}
+
+      <Gallery photos={data} isLoading={isLoading} category={category} />
     </>
   );
 };
