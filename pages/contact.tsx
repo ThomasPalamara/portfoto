@@ -129,7 +129,7 @@ const Contact = () => {
             style={{
               maxWidth: '700px',
               backgroundImage:
-                'url("https://ik.imagekit.io/uiw3np2kr8ww/contact_qDbNusnok.jpg?updatedAt=1707574697089")',
+                'url("https://ik.imagekit.io/uiw3np2kr8ww/tr:q-30/contact_qDbNusnok.jpg?updatedAt=1707574697089")',
             }}
           />
         </div>

@@ -7,6 +7,7 @@ import { PopupContextProvider } from '../components/Contexts/PopupContext';
 import PageTitle from '../components/Navigation/PageTitle';
 import { useRouter } from 'next/router';
 import { useIsMobile } from '../utils/hooks';
+import CookieConsent from 'react-cookie-consent';
 
 interface Props extends AppProps {
   props: {
@@ -42,6 +43,15 @@ function MyApp({ Component, pageProps }: Props) {
         </div>
 
         <Footer height={footerHeight} />
+        <CookieConsent
+          location="bottom"
+          buttonText="I understand"
+          expires={365}
+          disableButtonStyles
+          buttonClasses="text-gray-700 hover:bg-gray-400 bg-white py-2 px-8 inline-flex items-center"
+        >
+          This website uses cookies to enhance your experience.
+        </CookieConsent>
       </div>
     </PopupContextProvider>
   );

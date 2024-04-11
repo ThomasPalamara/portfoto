@@ -57,7 +57,7 @@ body {
 }
 
 body {
-  background: #eee;
+  background: theme('colors.gray.100');
   font-size: 14px;
   color: #000;
   margin: 0;
@@ -71,7 +71,7 @@ body {
 
  .swiper-slide {
   text-align: center;
-  background: #eee;
+  background: theme('colors.gray.100');
   box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -124,8 +124,8 @@ body {
 .nav__link{
   background-image: linear-gradient(
     to right,
-    #292929,
-    #292929 50%,
+    theme('colors.gray.800'),
+    theme('colors.gray.800') 50%,
     #000 50%
   );
   background-size: 200% 100%;
@@ -140,7 +140,7 @@ body {
 
 .nav__link:before {
   content: '';
-  background: #292929;
+  background: theme('colors.gray.800');
   display: block;
   position: absolute;
   bottom: -2px;
@@ -162,7 +162,7 @@ font-weight: normal;
 .loader{
     width: 56px;
     height: 56px;
-    border: 4px solid #292929;
+    border: 4px solid theme('colors.gray.800');
     border-radius: 50%;
     position: relative;
     animation: loader-scale 1s ease-out infinite;

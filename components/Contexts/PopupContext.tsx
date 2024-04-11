@@ -1,11 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Popup from '../Popup/Popup';
-
-interface Toast {
-  //   id: number;
-  //   message: string;
-  //   variant: 'error' | 'success' | 'primary';
-}
 
 type ContextProps = {
   openPopup: (currentPhoto: Photo['fileId']) => void;
@@ -19,7 +13,10 @@ export const usePopup = (photos: Photo[]) => {
   if (context === null) {
     throw new Error('usePopup must be used within a PopupProvider');
   }
-  context.setPhotos(photos);
+  useEffect(() => {
+    context.setPhotos(photos);
+  }, []);
+
   return context;
 };
 
@@ -27,7 +24,7 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [photos, setPhotos] = useState<[] | Photo[]>([]);
   const [current, setCurrent] = useState<null | Photo['fileId']>(null);
-  // function that set the state to true and take an array of photo and a current  photo id  as parameter
+  // function that set the state to true and take an array of photo and a current photo id as parameter
   const openPopup: ContextProps['openPopup'] = (currentPhoto) => {
     setIsOpen(true);
     setCurrent(currentPhoto);
